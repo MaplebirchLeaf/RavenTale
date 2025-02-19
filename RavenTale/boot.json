@@ -5,39 +5,39 @@
     "game/fallenangel/Feud.css"
   ],
   "scriptFileList": [
-    "game/fallenangel/Feud.js",
     "game/npcSettings/Tsukihan.js",
-    "game/RaventaleTraits.js"
+    "game/RaventaleTraits.js",
+    "game/fallenangel/Feud.js"
   ],
   "tweeFileList": [
-    "game/overworld-town/loc-park/ParkRavenPlot.twee",
-    "game/RavenTaleCharacteristicsSkills.twee",
-    "game/overworld-forest/loc-ravenshrine/raven_shrine.twee",
-    "game/overworld-forest/loc-ravenshrine/TsukihanRoom.twee",
-    "game/overworld-town/RobinConfession.twee",
-    "game/overworld-forest/Gwylan_TransitPlot.twee",
     "game/overworld-forest/loc-ravenshrine/ravenTale_setting.twee",
+    "game/overworld-town/RobinConfession.twee",
+    "game/overworld-forest/loc-ravenshrine/TsukihanRoom.twee",
+    "game/overworld-forest/Gwylan_TransitPlot.twee",
+    "game/RavenTaleCharacteristicsSkills.twee",
     "game/npcSettings/TsukihanSetting.twee",
-    "game/ItemSettings/ClothesSettings.twee"
+    "game/ItemSettings/ClothesSettings.twee",
+    "game/overworld-forest/loc-ravenshrine/raven_shrine.twee",
+    "game/overworld-town/loc-park/ParkRavenPlot.twee"
   ],
   "imgFileList": [
-    "img/misc/icon/Platformicon.png",
-    "img/misc/icon/ravenshrineicon.png",
-    "img/misc/locations/forest_raven_shrine/base.png",
-    "img/misc/icon/Emaframeicon.png",
-    "img/misc/locations/forest_raven_shrine/snow.png",
-    "img/ui/balance.png",
-    "img/misc/icon/clothes/crow_talisman.png",
     "img/misc/icon/baidianicon.png",
-    "img/ui/arrogant.png",
     "img/misc/icon/toriiicon.png",
-    "img/misc/icon/ImperialGuardicon.png",
-    "img/clothes/neck/crowtalisman/full.png",
+    "img/misc/icon/parkcrowchair.png",
+    "img/misc/locations/forest_raven_shrine/snow.png",
+    "img/misc/icon/Platformicon.png",
+    "img/ui/arrogant.png",
+    "img/misc/icon/ravenshrineicon.png",
     "img/misc/icon/crowchair.png",
     "img/misc/icon/shrinepondicon.png",
+    "img/ui/balance.png",
+    "img/misc/icon/ImperialGuardicon.png",
     "img/ui/rotten.png",
+    "img/clothes/neck/crowtalisman/full.png",
+    "img/misc/icon/Emaframeicon.png",
     "img/misc/icon/Saisenbakoicon.png",
-    "img/misc/icon/parkcrowchair.png"
+    "img/misc/icon/clothes/crow_talisman.png",
+    "img/misc/locations/forest_raven_shrine/base.png"
   ],
   "additionFile": [
     "game/ItemSettings/RavenReminders.txt",

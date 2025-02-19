@@ -572,8 +572,10 @@
 <br><br>
 <span class="gold">你现在拥有<<print $Ravnecost>>枚鸦币。</span>
 <br><br><br>
+<<link [[取消此模组的特质|Raven Tale Del]]>><</link>>
+<br>
 <<if $Ravencost > 100>>
-    <<link [[获取鸟的转化|Raven Shrine Shop]]>><<set $harpy to 6>><<set $birdFly to 2>><<set $birdbuild to 100>><<set $Ravencost -= 100>><</link>><<note "-100鸦币" "red">>
+    <<link [[获取鸟的转化|Raven Shrine Shop]]>><<set $harpy to 6>><<set $birdFly to 2>><<set $birdbuild to 100>><<set $worldwings to true>><<set $Ravencost -= 100>><</link>><<note "-100鸦币" "red">>
     <br>
     <<link [[获取牛的转化|Raven Shrine Shop]]>><<set $cow to 6>><<set $cowbuild to 100>><<set $Ravencost -= 80>><</link>><<note "-80鸦币" "red">>
     <br>
@@ -583,6 +585,25 @@
 <</if>>
 <<getouticon>><<link [[返回 (0:01)|Imperial Guard]]>><<pass 1>><</link>>
 
+:: Raven Tale Del
+
+<<link [[取消玄翎|Raven Tale Del]]>><<set $darkfeathers to undefined>><</link>>
+<br>
+<<link [[取消春晖|Raven Tale Del]]>><<set $springglow to undefined>><</link>>
+<br>
+<<link [[取消殷勤|Raven Tale Del]]>><<set $solicitous to undefined>><</link>>
+<br>
+<<link [[取消沐光|Raven Tale Del]]>><<set $showersunlight to undefined>><</link>>
+<br>
+<<link [[取消纯净羽翼|Raven Tale Del]]>><<set $purewings to undefined>><</link>>
+<br>
+<<link [[取消残破羽翼|Raven Tale Del]]>><<set $brokenwings to undefined>><</link>>
+<br>
+<<link [[取消恶魔之翼|Raven Tale Del]]>><<set $devilWings to undefined>><</link>>
+<br>
+<<link [[取消耀世羽翼|Raven Tale Del]]>><<set $worldwings to undefined>><</link>>
+<br>
+<<getouticon>><<link [[返回 (0:01)|Imperial Guard]]>><<pass 1>><</link>>
 
 :: Tsukihan First Meet
 <<npc Tsukihan>><<person1>>
