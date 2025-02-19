@@ -1,0 +1,17 @@
+:: Tsukihan Setting [widget]
+
+<<widget "Tsukihan_title">>
+    
+    <<if (C.npc['Tsukihan'].gender === 'm') >>
+        <<set {
+            C.npc['Tsukihan'].title = '神社宮司';
+            C.npc['Tsukihan'].title_lan = { EN: 'Shrine Chief', CN: '神社宮司' };}>>
+    <<elseif (C.npc['Tsukihan'].gender === 'f') >> 
+        <<set {
+            C.npc['Tsukihan'].title = '神社巫女';
+            C.npc['Tsukihan'].title_lan = { EN: 'Shrine Maiden', CN: '神社巫女' };}>>
+    <<else>>
+    <</if>>
+
+<</widget>>
+

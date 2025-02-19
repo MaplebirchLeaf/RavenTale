@@ -1,0 +1,749 @@
+:: Raven Shrine First Encounter
+
+<<effects>>
+<<if $Gwylan_permission is true && ($worn.neck.name is "Crow Talisman")>>
+    <<if $First_Encounter is true>>
+    你的脖子上带着格威岚给予的护符，你感觉小路的深处没有那么黑暗了。
+    <br>
+    你的周围好像飞来几只乌鸦，它们好像在指引着你。
+    <br><br>
+    你觉得现在可以往深处走去了。
+    <<else>>
+        <<set $First_Encounter to true>>
+    你根据格威岚的提醒发现这里有一条被隐藏起来的碎石小路，这条小路被杂草所覆盖很难被人发现。
+    <br>
+    遮天的巨木挡住了小路远方，你看不清尽头是什么。四周有几只乌鸦飞了过来，它们好像指引你往深处走去
+    <</if>>
+<<elseif $Gwylan_permission is true && ($worn.neck.name isnot "Crow Talisman")>>
+    <<if $First_Encounter is true>>
+    碎石路的周围依旧遍布杂草，深山中仍然传来诡异的声响。你望了望远处的黑暗，那里什么变化都没有。
+    <br><br>
+    你的直觉告诉你应该赶快离开这里。
+    <<else>>
+        <<set $First_Encounter to true>>
+        <<stress 2>>
+    你根据格威岚的提醒发现这里有一条被隐藏起来的碎石小路，这条小路被杂草所覆盖很难被人发现。
+    <br>
+    遮天的巨木挡住了小路远方，你看不清尽头是什么。四周寂寥无人，呼呼的风声让你感到一丝寒意。
+    <br><br>
+    你听见了野兽的吼叫声，你感觉有些不安。<<gstress>>
+    <</if>>
+<<else>>
+    <<if $First_Encounter is true>>
+    碎石路的周围依旧遍布杂草，深山中仍然传来诡异的声响。你望了望远处的黑暗，那里显得格外幽寂。
+    <br><br>
+    你的直觉告诉你应该赶快离开这里。
+    <<else>>
+       <<set $First_Encounter to true>>
+       <<stress 2>>
+    你突然发现这里有一条被隐藏起来的碎石小路，这条小路被杂草所覆盖很难被人发现。
+    <br>
+    遮天的巨木挡住了小路远方，你看不清尽头是什么。四周寂寥无人，呼呼的风声让你感到一丝寒意。
+    <br><br>
+    你听见了野兽的吼叫声，你感觉有些不安。<<gstress>>
+    <</if>>
+ <</if>>
+
+<<if $Gwylan_permission is true && ($worn.neck.name is "Crow Talisman")>>
+    <<if $Shrine_Causeway_First_In isnot true>>
+        <br><br>
+        <<mysteryicon>><<link [[幽寂的山路 (0:10)|Shrine Causeway First]]>><<pass 10>><</link>>
+    <<else>>
+        <br><br>
+        <<link [[归鸦径 (0:10)|Shrine Causeway]]>><<pass 10>><</link>>
+    <</if>>
+<<elseif $Gwylan_permission is true && ($worn.neck.name isnot "Crow Talisman")>>
+    <br><br>
+    <<foresticon>><<link [[返回 (0:05)|Forest]]>><<pass 5>><</link>>
+    <span class="teal"><<note "或许可以戴上格威岚给予的护符" "italic">></span>
+<<else>>
+    <br><br>
+    <<foresticon>><<link [[返回 (0:05)|Forest]]>><<pass 5>><</link>>
+<</if>>
+
+:: Shrine Causeway First
+<<set $outside to 1>>
+<<stress -24>>
+<<effects>>
+
+<span class="teal">你发现了一处可以通往山顶的小路。</span>
+<br><br>
+你看见许多已经有些褪色的朱红色柱子矗立在道路上，这些粗大的朱红色立柱稳固地伫立着，柱体上布满了因年代产生的斑驳痕迹。
+在立柱之上，两条厚实的横梁平稳地横跨过来。上方的横梁微微向两侧延展且略带弧度，横梁的尾端则向天际轻轻翘起。
+那黑色的顶梁在朱红色立柱的衬托下格外引人注目，上面还装饰着已然褪色金色金属挂件，为整个构造增添了几分庄重与神秘感。
+<br><br>
+<span class="lblue">你脚下踩着青石板路。</span>
+<br><br>
+阶梯的两旁摆放着石质灯笼，它们看起来好像还有微弱的灯火在闪烁。
+<br>
+你看向周围，茂密的树木围住了这处山道。飘散的落叶与萧萧的风声让你感到宁静。<<lstress>>
+<br><br><br>
+
+<<icon "toriiicon.png">><<link [[向深处走去 (0:05)|Torii]]>><<pass 5>><</link>>
+<br><br>
+<<foresticon>><<link [[返回森林 (0:15)|Forest]]>><<pass 15>><</link>>
+
+:: Shrine Causeway
+<<set $outside to 1>>
+<<effects>>
+
+你悠闲地走在青石板路上，树林中飞窜出几只渡鸦，它们像是看见了你，纷纷往林中飞去————
+<br><br>
+参道两旁的石灯笼闪烁着微弱的灯火，落叶与微风让你感到舒适。<<stress -2>><<lstress>>
+<br><br><br>
+
+<<icon "toriiicon.png">><<link [[向深处走去 (0:05)|Torii]]>><<pass 5>><</link>>
+<br><br>
+<<foresticon>><<link [[返回森林 (0:15)|Forest]]>><<pass 15>><</link>>
+
+:: Torii
+<<set $Shrine_Causeway_First_In to true>>
+<<set $location to "forest_raven_shrine">>
+<<effects>>
+
+你走在一根根朱红色立柱的下方，四周的风流裹挟着你，细腻的光线照耀在你的身上。
+<<if !$Torii_First_In>>
+    <br>
+    你在石道的一旁瞥见一座石碑，上面像是用朱砂刻写了什么字符，你走上前去查看石碑上所刻写的内容————<span class="red">归鸦径</span>。
+    <br><br>
+    <span class="teal">你在石碑的附近发现还有一处檀木小亭</span>
+    <br><br>
+<</if>>
+宏伟的巨木荫蔽着大地，轻柔的微风抚爱着众生，你享受在这漫步的悠闲时光。
+<br><br>
+<<if (Time.hour >= 10 && Time.hour < 15) or $Tsukihan_Allowed_Pass_Anytime is true>>
+    <<if $Tsukihan_Allowed_Pass_Anytime is undefined>>
+    <span class="gold">前面好像还能继续往前走。</span>
+    <br><br><br>
+    <</if>>
+    <<if $exposed lte 1>>
+        <<if !$Torii_First_In>>
+            <<mysteryicon>><<link [[继续往上 (0:10)|Raven Shrine]]>><<pass 10>><<set $Torii_First_In to true>><</link>>
+			<br>
+		<<else>>
+			<<icon "ravenshrineicon.png">><<link [[前往神社 (0:10)|Raven Shrine]]>><<pass 10>><</link>>
+			<br>
+        <</if>>
+    <</if>>
+<<else>>
+    <span class="gold">往上前进的路好像关闭了。</span>
+    <br><br><br>
+<</if>>
+    <<link [[檀香亭 (0:05)|Sandalwood Pavilion]]>><<pass 5>><</link>>
+    <br>
+    <<foresticon>><<link [[返回森林 (0:20)|Forest]]>><<pass 20>><</link>>
+
+:: Sandalwood Pavilion
+
+<span class="gold">你看到了一座小巧的檀木小亭。</span>
+<br><br>
+它的屋顶被檜皮覆盖且微微倾斜，呈着有些褪色的深棕色。檐口高高翘起，雨水滑落时会顺着檐角的弧线缓缓滴下，有着一种古朴自然的美感。
+檀木的立柱四周覆有岁月的斑驳痕迹，上面的颜色也已略微暗沉，与周围青翠的树木相互交融，与自然结为了一体。
+<br><br>
+你在檀香亭的正中央安放着一块方形石槽，石槽上雕刻着奇怪的纹路，它的边角被打磨得光滑圆润，显然经历了长久的岁月。
+<br>
+石槽内注满着清澈的泉水，水面微微荡漾，清凉透亮。水中静放着数支木勺，勺柄平直，形态简洁。
+<br><br><br>
+<<if !$handsanitizer>>
+    <<link [[前往石槽处 (0:01)|Hand sanitizer]]>><<pass 1>><</link>>
+<<else>>
+    <<link [[净手台 (0:01)|Hand sanitizer]]>><<pass 1>><</link>>
+<</if>>
+<br>
+<<icon "toriiicon.png">><<link [[返回归鸦径 (0:05)|Torii]]>><<pass 5>><</link>>
+
+:: Hand sanitizer
+
+<<if $handsanitizer isnot true>>
+    <span class="gold">你来到了石槽旁，这里流淌着清澈的泉水。石槽的上方歪歪扭扭的写了“净手台”这几个字。</span>
+    <br><br>
+<<else>>
+    <span class="gold">你来到了净手台处，这里流淌着清澈的泉水。</span>
+    <br><br>
+<</if>>
+    泉水从石缝中潺潺流出，清澈见底，仿佛能洗净一切尘埃。你低头看着自己的双手，指尖沾满了泥土和灰尘，连掌纹都被掩盖得模糊不清。
+    <br><br>
+    你轻轻叹了口气，伸手拿起石槽中的木勺。木勺的柄已经被岁月磨得光滑，握在手中有一种温润的触感。你将木勺浸入泉水中，勺底轻轻触到石槽的底部，发出细微的“咚”声。
+    泉水顺着勺沿流入勺中，清澈的水面映出你略显疲惫的面容。你缓缓将木勺抬起，泉水从勺中倾泻而下，落在你的双手上。
+    冰凉的水流冲刷着指缝间的泥土，泥灰随着水流一点点褪去，露出原本的肤色。
+<br><br><br>
+
+<<link [[净手 (0:05)|Temizuya]]>><<pass 5>><<stress -1>><<set $handsanitizer to true>><</link>><<lstress>>
+<br>
+<<getouticon>><<link [[返回 (0:01)|Sandalwood Pavilion]]>><<pass 1>><</link>>
+
+:: Temizuya
+
+你反复舀起泉水，任由水流在掌心流淌，指尖轻轻揉搓，仿佛要将所有的疲惫和尘埃都洗去。泉水溅落在石槽边缘，发出清脆的声响，伴随着远处隐约的鸟鸣，仿佛整个世界都安静了下来。
+<br>
+最后，你甩了甩手上的水珠，水滴在空中划出几道晶莹的弧线，落入石槽中，激起一圈圈微小的涟漪。你看着自己洁净的双手，心中也仿佛被这清泉洗涤，变得宁静而清明。<<lstress>>
+<br><br><br>
+
+<<link [[继续 (0:05)|Temizuya]]>><<pass 5>><<stress -1>><</link>>
+<br>
+<<getouticon>><<link [[返回 (0:01)|Sandalwood Pavilion]]>><<pass 1>><</link>>
+
+:: Raven Shrine
+<<set $location to "forest_raven_shrine">>
+<<set $outside to 0>>
+<<if (C.npc['Tsukihan'].gender === 'm') >>
+    <<set {
+         C.npc['Tsukihan'].title = '神社宮司';
+         C.npc['Tsukihan'].title_lan = { EN: 'Shrine Chief', CN: '神社宮司' };}>>
+<<else>> 
+    <<set {
+         C.npc['Tsukihan'].title = '神社巫女';
+        C.npc['Tsukihan'].title_lan = { EN: 'Shrine Maiden', CN: '神社巫女' };}>>
+<</if>>
+<<if !$raven_shrine_first>>
+    <span class="gold">你走到了山林的尽头，在这古木参天、枝繁叶茂，你看到了被树荫笼罩的大型木质建筑。</span>
+<br><br>
+    这儿的空气中弥漫的清冷的泥土味，通往屋舍的道路铺满了湿润的青苔，显然来这里的人并不是很多。
+    你走近建筑，看到一座暗色的木制牌坊巍然耸立，还有几只黑色的渡鸦栖息在上方，目光锐利且沉默。而后你勉勉强强看清了刻写在牌坊上已经稍有褪色的文字
+<br><br>
+    <span class="red">⌈渡——鸦——神——社——⌋。</span>
+<br><br>
+    你观察道，神社的建筑以深色的木材为主，外墙微微泛着古老的暗红色，这里仿佛受到了许些风霜的洗礼。
+    檐角的雕饰细腻地摆放着，上面雕刻着鸦羽和古老的符文。屋顶则覆以厚重的青灰色瓦片，在阴雨的天气中更显沉静肃穆，瓦片上沾染有湿润的苔藓，像是时光流淌所留下的痕迹。
+    神社的四周静静矗立着石灯笼，灯内还亮着微弱的火光照亮这幽暗的山林。这些石灯笼就像是一双双渡鸦的眼睛，凝视着这片隐士之地。
+    神社背后是一片茂密的枫树林，每到秋日，枫叶如火般鲜红，映衬得神社更添一份妖冶之美。枫树间隐约有黑羽飘落，仿佛渡鸦在悄无声息地往来巡守，伴随着风中低语的诡秘声响。
+<br><br>
+    <span class="grey">两座渡鸦石像矗立在神社中，像是在驱邪除恶，护佑四方</span>
+<br><br><<set $raven_shrine_first to true>>
+    <<if ((Time.hour >= 10 && Time.hour < 12) || (Time.hour >= 14 && Time.hour < 15)) && $Tsukihan_Look is undefined>>
+	    你远远地看到有个<<nnpcboy "Tsukihan">>在<span class="lblue">神社拜殿</span>中摆弄着什么。这里的周围好像只有你在这，你好奇想走上前去看看。
+	<br><br><br>
+    <<else>>
+	<br>
+    <</if>>
+<<else>>
+<span class="grey">渡鸦神社的氛围寂静而神秘，仿佛身处在被时光遗忘的旧址中。</span>
+<br><br>
+    参道两旁的古木枝叶交织，阳光从树隙间洒下斑驳的光影，让整条路显得幽暗而深邃。
+    微风拂过，偶尔传来渡鸦沙哑的叫声，在林间回荡，似是低语，又像某种遥远的召唤。
+<br><br>
+    <span class="grey">两座渡鸦石像矗立在神社中，像是在驱邪除恶，护佑四方。</span>
+<br><br>
+    <<if ((Time.hour >= 10 && Time.hour < 12) || (Time.hour >= 14 && Time.hour < 15))>>
+        <<if $Tsukihan_Look is undefined>>
+	    你好像远远的看到有个<<nnpcboy "Tsukihan">>在<span class="lblue">神社拜殿</span>中摆弄着什么。这里的周围好像只有你在这，你好奇想走上前去看看。
+	    <br><br><br>
+        <<elseif $Tsukihan_Look is 1>>
+            <span class="gold"><<print sexSwitch(
+        "Tsukihan",
+        "月羽在观台上静静地吟诵着古老的祝词，只有数只渡鸦在月羽的头上盘旋。",
+        "月羽在观台上静静地跳着悠扬的神乐舞，只有数只渡鸦在月羽的头上盘旋。",
+            )>></span>
+	    <br><br><br>
+        <<elseif $Tsukihan_Look is 2>> 
+	        <span class="gold"><<print sexSwitch(
+        "Tsukihan",
+        "月羽在观台上吟诵着古老的祝词，你朝着月羽的方向看去，你发现月羽也在看着你。",
+        "月羽在观台上跳着悠扬的神乐舞，你朝着月羽的方向看去，你发现月羽也在看着你。",
+            )>></span>
+	    <br><br><br>
+        <<else>>
+        <</if>>
+    <<elseif $Tsukihan_Look isnot undefined>>
+	    月羽不在观台上。
+	<br><br><br>
+    <<else>>
+	<br>
+    <</if>>
+<</if>>
+
+<<if (Time.hour > 18) or $Tsukihan_Allowed_Pass_Anytime is true>>
+    <<if $Tsukihan_Room_Allowed is true>>
+		<<bedroomicon>><<link [[前往神社屋舍 (0:05)|Tsukihan Room]]>><<pass 5>><</link>>
+		<br>
+    <</if>>
+    <<icon "baidianicon.png">><<link [[前往拜殿 (0:05)|Saisenbako]]>><<pass 5>><</link>>
+    <br>
+    <<if $Tsukihan_meet_first is true>>
+        <<icon "Emaframeicon.png">><<link [[前往祈愿处 (0:05)|Emaframe]]>><<pass 5>><</link>>
+        <br>
+        <<icon "ImperialGuardicon.png">><<link [[前往御守处 (0:05)|Imperial Guard]]>><<pass 5>><</link>>
+    <</if>>
+<<else>>
+    <<if Time.hour >= 18 && $Tsukihan_Allowed_Pass_Anytime isnot true>>
+        <span class="gold">天好像太晚了，神社的门要关了，现在应该赶快下山。</span>
+    <<elseif Time.hour < 9 && $Tsukihan_Allowed_Pass_Anytime isnot true>>
+        <span class="gold">天好像太早了，神社还没有开门，现在应该赶快下山。</span>
+    <</if>>
+    <br><br>
+    <<getouticon>><<link [[返回森林 (0:30)|Forest]]>><<pass 30>><</link>>
+<</if>>
+
+:: Saisenbako
+
+<<if ((Time.hour >= 10 && Time.hour < 12) || (Time.hour >= 14 && Time.hour < 15))>>
+<span class="gold">你看到拜殿中的祭祀场有人在忙着什么。</span>
+<br><br>
+<</if>>
+你走进了渡鸦神社的拜殿前，脚步轻轻落在石阶上。大门半开，神龛前的香火缭绕，飘出的烟雾在阳光的照射下形成一层朦胧的光晕。
+木质的梁柱和精致的雕刻透露着古老的气息，神殿内一片肃穆，整个空间充满了神圣与宁静。
+<br>
+空气中弥漫着一股淡淡的香气，让人不禁深吸一口气，心境也随之平静下来。
+<br><br><br>
+<<if $Tsukihan_meet_first is true>>
+    <<icon "Saisenbakoicon.png">><<link [[前往奉纳箱|Saisenbako Money]]>><</link>>
+    <<if $Saisenbako_Money is true>>
+        <span class="teal"><<note "你今天已经塞过钱了。" "italic">></span>
+    <</if>>
+    <br>
+    <<icon "shrinepondicon.png">><<link [[前往神社池塘 (0:05)|Raven Shrine Pond]]>><<pass 5>><</link>>
+    <br>
+<</if>>
+<<icon "Platformicon.png">><<link [[前往祭祀场|Raven Viewing Platform]]>><</link>>
+<br>
+<<icon "ravenshrineicon.png">><<link [[返回渡鸦石像处 (0:05)|Raven Shrine]]>><<pass 5>><</link>>
+
+:: Saisenbako Money
+
+
+你来到了神社的奉纳箱旁。
+<br><br>
+奉纳箱静静地矗立在拜殿前，木质的外表经过岁月的洗礼，泛着温润的光泽。
+箱体上方刻着精美的黑鸟纹样，或许是神社的徽记，又或是象征吉祥的图案。
+奉纳箱的顶部有一条细长的开口，边缘被无数参拜者的手磨得光滑发亮，仿佛承载了无数祈愿与希望。
+<br><br>
+<<if $Saisenbako_Money is undefined>>
+    <span class="gold">你正想着该往奉纳箱中投入多少钱。</span>
+    <br><br><br><<set $Saisenbako_Money to true>>
+    <<link [[向钱箱中投入£1000|Saisenbako Throw]]>><<set $Saisenbako_Throw to 1>><</link>>
+    <br>
+    <<link [[向钱箱中投入£500|Saisenbako Throw]]>><<set $Saisenbako_Throw to 2>><</link>>
+    <br>
+    <<link [[向钱箱中投入£100|Saisenbako Throw]]>><<set $Saisenbako_Throw to 3>><</link>>
+    <br>
+<<else>>
+<</if>>
+    <<getouticon>><<link [[返回|Saisenbako]]>><</link>>
+
+:: Saisenbako Throw
+
+<<if $Saisenbako_Throw is 1>>
+    <<set $Saisenbako_Throw to 0>>
+    <<if $money lt 100000>>
+        <br><br>
+        <span class="teal">你的钱不够。</span>
+    <<else>>
+        <span class="gold">你往奉纳箱中投入了£1000。</span><br>
+        <br><br>
+        <<set $money -= 100000>><<set $Ravencost += 10>>
+        <<link [[继续|Saisenbako Money]]>><</link>>
+        <br>
+    <</if>>
+<<elseif $Saisenbako_Throw is 2>>
+    <<set $Saisenbako_Throw to 0>>
+    <<if $money lt 50000>>
+        <br><br>
+        <span class="teal">你的钱不够。</span>
+    <<else>>
+        <span class="gold">你往奉纳箱中投入了£500。</span><br>
+        <br><br>
+        <<set $money -= 50000>><<set $Ravencost += 5>>
+        <<link [[继续|Saisenbako Money]]>><</link>>
+        <br>
+    <</if>>
+<<elseif $Saisenbako_Throw is 3>>
+    <<set $Saisenbako_Throw to 0>>
+    <<if $money lt 10000>>
+        <br><br>
+        <span class="teal">你的钱不够。</span>
+    <<else>>
+        <span class="gold">你往奉纳箱中投入了£100。</span><br>
+        <br><br>
+        <<set $money -= 10000>><<set $Ravencost += 1>>
+        <<link [[继续|Saisenbako Money]]>><</link>>
+        <br>
+    <</if>>
+<<else>>
+<</if>>
+<<getouticon>><<link [[返回|Saisenbako]]>><</link>>
+
+:: Raven Viewing Platform
+
+/*<<npcincr Tsukihan love 20>><<npcincr Tsukihan dom 50>><<npcincr Tsukihan trauma 50>><<npcincr Tsukihan lust 50>>*/
+
+<<if ((Time.hour >= 10 && Time.hour < 12) || (Time.hour >= 14 && Time.hour < 15))>>
+    <span class="gold">神社的祭祀场上，烛光柔和地映照在木质的梁柱上，空气中弥漫着淡淡的线香气息。</span>
+    <br><br>
+    <<set C.npc.Tsukihan.init to 1>>
+    <<if (C.npc['Tsukihan'].gender === 'm') >>
+        <<set {
+            C.npc['Tsukihan'].title = '神社宮司';
+            C.npc['Tsukihan'].title_lan = { EN: 'Shrine Chief', CN: '神社宮司' };}>>
+    年轻的宫司少年身着洁白的祭服、头戴乌帽。他的神情虽略显稚嫩，却透着一股与年龄不符的庄重。
+    他的步伐稳健，手中的神杖轻轻点地，发出清脆的声响。神台上供奉着神镜、神剑和勾玉，象征着神明的威严与神圣。
+    <br><br>
+    宫司双手合十，微微闭目，口中低声吟诵着古老的祝词。他的声音虽不如年长的宫司那般低沉，却带着少年特有的清澈与坚定。
+    随后，他轻轻摇动手中的神乐铃，铃声清脆悠扬。
+    <br><br>
+    最后宫司缓缓鞠躬，向神明表达最深的敬意，随后将供品——新鲜的稻米、清酒和水果——恭敬地摆放在神台前。
+    <br>
+    他的每一个动作都充满了仪式感，仿佛在演绎一场神圣的舞蹈。
+    <br>
+    <<elseif (C.npc['Tsukihan'].gender === 'f') >>
+        <<set {
+            C.npc['Tsukihan'].title = '神社巫女';
+            C.npc['Tsukihan'].title_lan = { EN: 'Shrine Maiden', CN: '神社巫女' };}>>
+    一位少女身着绯红的袴裙，白色的上衣洁净如雪，头戴金色的花簪，步履轻盈如风。脸上带着恬静的微笑，眼中闪烁着对神明的虔诚。
+    巫女手持神乐铃和扇子，随着悠扬的笛声和鼓点，缓缓起舞。她的舞姿虽不如成年巫女那般娴熟，却充满了青春的活力与灵动。
+    <br><br>
+    手中的神乐铃随着动作轻轻摇晃，发出清脆的铃声，扇子在她手中仿佛有了生命，时而展开如绽放的花朵，时而合拢如虔诚的祈祷。
+    <br><br>
+    舞至高潮时，巫女的舞姿与烛光交相辉映，将整个神社带入了一个神圣而宁静的境界。她的每一个动作都在向神明诉说心中的祈愿。
+    <br><br>
+    最后，巫女缓缓停下，双手合十，向神明深深鞠躬，结束了这场神圣的神乐舞表演。
+    <br>
+    <<else>>
+    <</if>>
+    <br>
+    <<if !$Tsukihan_meet_first>>
+        <<link [[目光对视 (0:05)|Tsukihan First Meet]]>><<pass 5>><</link>>
+    <<else>>
+        <<link [[参拜祭礼 (0:10)|Tsukihan First Meet]]>><<pass 10>><</link>>
+    <</if>>
+<<else>>
+    <span class="gold">神社的祭祀场上什么人也没有。</span>
+    <br>
+<</if>>
+<br>
+<<link [[返回拜殿处|Saisenbako]]>><</link>>
+
+:: Emaframe
+
+神社的祈愿处位于神社的西面，你来到了神社祈愿的地方。
+<br><br>
+在祈愿处的前方有一座木质的祈愿板，上面挂满写着愿望的绘马。这些绘马悬挂在板子的横梁上，当风吹过时其上的绘马也随风晃动。
+<br><br>
+几只飞鸟飞过，发出清脆的叫声，让这地方显得悠扬安逸。
+<br><br>
+<<if $EmaItem is 0>>
+    <span class="teal"><<note "你现在没有绘马。" "italic">></span>
+    <br><br>
+<</if>>
+<br>
+
+<<link [[祈福管理处 (0:01)|Get Ema]]>><<pass 1>><</link>>
+<br>
+<<link [[神社祈愿 (0:01)|Shrine Wish]]>><<pass 1>><</link>>
+<br>
+<<icon "ravenshrineicon.png">><<link [[返回渡鸦石像处 (0:05)|Raven Shrine]]>><<pass 5>><</link>>
+
+:: Get Ema
+
+神社的管理处是一座略有简陋的木屋，木屋的顶上覆盖着苔藓，门槛也被白蚁所腐蚀。
+<br><br>
+屋内，光线透过木窗洒入，空气中弥漫着淡淡的木材香。屋内墙上挂着几幅神社历史的画作，展示着神社悠久的文化与故事。桌上放着一些供奉的神具，旁边还有一些香炉和神社所需的日常用品。
+<br>
+外面传来鸟鸣声和风吹过树叶的沙沙声，屋子的房梁上也栖息着几只鸟儿在嘶鸣。
+<br><br>
+
+<<if $EmaDaily is undefined>>
+    <span class="gold">你看到桌子中放了一板绘马，或许可以将它拿走。</span>
+    <br><br><br>
+    <<link [[拿走绘马|Get Ema]]>><</link>>
+    <br>
+    <<getouticon>><<link [[返回 (0:01)|Emaframe]]>><<pass 1>><</link>>
+<<else>>
+    <span class="teal"><<note "你今天已经拿过绘马了。" "italic">></span>
+    <br><br><br>
+    <<getouticon>><<link [[返回 (0:01)|Emaframe]]>><<pass 1>><</link>>
+<</if>>
+
+
+:: Ema
+
+<<set $EmaItem += 1>>
+<span class="gold">你将屋中的绘马拿走了。</span>
+<br><br>
+房梁上的鸟儿四处飞散，一缕阳光射进破败的屋中。你没有停留即刻离开了屋子。
+<br><br>
+你看了看你手中陈旧的绘马，这枚陈旧的绘马已经有些年头了，木质表面泛着微微的老旧感，角落处磨损得略显不平整。
+原本的木色渐渐被岁月染成了暗沉的棕色，部分地方甚至已经有些斑驳，似乎经历了无数个风雨的洗礼。
+<br><br>
+绘马的正面上，图案已经不那么鲜明了，颜色有些褪色。原本精细的线条和细节如今变得模糊不清。
+<br><br>
+绘马的下缘被风化得比较严重，细小的裂纹悄然蔓延，仿佛一个微小的破口，却也增添了它一种历经沧桑的美感。
+<br>
+挂着这枚绘马的绳子也略显松弛，微微弯曲着，随风摇曳，似乎在诉说着过往的岁月。
+
+<span id="next"><<link [[继续->Emaframe]]>><</link>></span><<nexttext>>
+
+:: Shrine Wish
+
+<<if $EmaItem > 1>>
+    <<set $EmaItem -= 1>>
+    <<set $shrinewish += 1>>
+    你将心中的愿望写在绘马中，轻轻地把它挂在祈愿板上。木板随风微微晃动，发出轻微的声响。
+    <br><br>
+    木牌与其它绘马并排悬挂，微风拂过，带动它轻轻摇摆。你的目光停留在那块绘马上，心中涌起一阵安宁与期待。
+    <br><br>
+    这一刻，所有的喧嚣都被抛在了身后，只有这一片寂静与神圣陪伴着我。无声的祈愿融入这片宁静的空气中，带着不舍却也满怀信心地随风飘向远方。<<lstress>><<stress -1>>
+    <br><br><br>
+<<else>>
+    <span class="gold">你的身上没有绘马。</span>
+    <br><br><br>
+<</if>>
+<<link [[净化世界|Purify the world]]>><</link>>
+<br>
+<<if $angel >= 4 && $shrinewish > 4>>
+    <<link [[天使赐福|Tale Blessed]]>><</link>>
+    <br>
+<<elseif $fallenangel >= 4 && $shrinewish > 4>>
+    <<link [[堕天使赐福|Tale Blessed]]>><</link>>
+    <br>
+<<elseif $demon >= 4 && $shrinewish > 4>>
+    <<link [[恶魔赐福|Tale Blessed]]>><</link>>
+    <br>
+<<else>>
+<</if>>
+<<getouticon>><<link [[返回 (0:01)|Emaframe]]>><<pass 1>><</link>>
+
+:: Purify the world
+
+<<if $shrinewish > 30 && $world_corruption_hard > 1>>
+    <<set $world_corruption_hard -= 1>>
+    你站在神社的祈愿台前，低下头闭上眼睛，感受着周围的宁静与神圣。空气中弥漫着淡淡的香火气息，微风轻拂过面庞，带来一丝清凉。
+    <br>
+    心中突然涌起一股难以言喻的情感——这个世界，太过纷扰与伤痛，人们常常迷失在欲望与争斗中，失去了内心的平静与纯净。
+    <br><br>
+    你轻轻拿起一块崭新的绘马，木板在手中温润，仿佛感受到了它的历史和沉淀。我深深吸了一口气，心中默默地许下一个愿望——希望这个世界能够被净化，愿人与人之间的隔阂与仇恨能消散，愿大地恢复平静，天空重新明净，万物重新找回它们的和谐与平衡。
+    <br>
+    你将这个愿望写在绘马上，字迹简洁，却包含了我所有的期望与梦想。在这片古老的神社，静谧的环境似乎让所有的杂念都远去，只剩下这份真诚的心愿。
+    <br>
+    你轻轻地把绘马挂在祈愿板上，眼神停留在它上面，仿佛看到了我的愿望随着风轻轻飘向远方，穿越时空，传递给那位神明。
+    <br><br>
+    <span class="green">“愿世界净化，愿一切恢复纯净与和谐。”你心中默念，仿佛听到了心灵深处的回应。</span>
+    <br><br>
+    随着风声拂过，神社内的铃铛轻轻响起，声音清澈而深远。我站在原地，感受到一种前所未有的安定与希望，仿佛这一份祈愿，不仅仅是对神明的呼唤，也是对自己内心深处纯净愿望的表达。
+    <br><br>
+    希望，在某个不远的未来，世界能够因这份真诚而变得更加明亮与美好。
+    <span class="teal"><<note "世界硬腐化-1" "italic">></span>
+<<else>>
+    <span class="gold">没有人回应你。</span>
+<</if>>
+<br><br><br>
+<span id="next"><<link [[继续->Shrine Wish]]>><</link>></span><<nexttext>>
+
+
+:: Tale Blessed
+
+<<if $angel >= 4 && $shrinewish > 4>>
+    <<set $purewings to true>><<set $showersunlight to true>>
+    <span class="gold">你获得了来自神社的祝福，你的天使能力增加了。</span>
+    <br><br><br>
+<span id="next"><<link [[继续->Shrine Wish]]>><</link>></span><<nexttext>>
+<<elseif $fallenangel >= 4 && $shrinewish > 4>>
+    <<set $brokenwings to true>>
+    <span class="black">你获得了来自神社的祝福，你的堕天使能力增加了。</span>
+    <br><br><br>
+<span id="next"><<link [[继续->Shrine Wish]]>><</link>></span><<nexttext>>
+<<elseif $demon >= 4 && $shrinewish > 4>>
+    <<set $devilWings to true>>
+    <span class="purple">你获得了来自神社的祝福，你的恶魔能力增加了。</span>
+    <br><br><br>
+<span id="next"><<link [[继续->Shrine Wish]]>><</link>></span><<nexttext>>
+<<else>>
+<</if>>
+
+:: Imperial Guard
+
+神社的御守处位于神社一隅，临近参拜道路的一侧。小小的木屋被古老的杉树遮蔽，屋顶覆盖着厚重的藤蔓，岁月的痕迹在每一根木梁上留下了浅浅的划痕。
+进入这个小屋，门口挂着一串铃铛，铃声清脆悦耳，仿佛一声轻轻的问候。屋内灯光温暖，空气中弥漫着香火的味道。
+<br><br>
+御守处的架子上整齐地摆放着各式各样的御守，色彩鲜艳，各具特色。每一个御守都用精美的布袋包裹，袋口系着一条细细的丝带，布料上刺绣着神社的标志或是吉祥的图案。
+<br><br>
+墙上的小木牌上写着许多信徒的祝福与祈愿，有些字迹清晰，有些已经模糊，仿佛在岁月的流逝中，记录下了无数的心愿。
+<br><br><br>
+
+
+<<link [[神社小摊 (0:01)|Raven Shrine Shop]]>><<pass 1>><</link>>
+<br>
+<<icon "ravenshrineicon.png">><<link [[返回渡鸦石像处 (0:05)|Raven Shrine]]>><<pass 5>><</link>>
+<br>
+<<foresticon>><<link [[下山的小道 (0:15)|Forest]]>><<pass 15>><</link>>
+
+:: Raven Shrine Shop
+
+这里是神社小摊,当鸦币大于100枚或80枚。。。。。（ps：作者疯了。）
+<br><br>
+<span class="gold">你现在拥有<<print $Ravnecost>>枚鸦币。</span>
+<br><br><br>
+<<if $Ravencost > 100>>
+    <<link [[获取鸟的转化|Raven Shrine Shop]]>><<set $harpy to 6>><<set $birdFly to 2>><<set $birdbuild to 100>><<set $Ravencost -= 100>><</link>><<note "-100鸦币" "red">>
+    <br>
+    <<link [[获取牛的转化|Raven Shrine Shop]]>><<set $cow to 6>><<set $cowbuild to 100>><<set $Ravencost -= 80>><</link>><<note "-80鸦币" "red">>
+    <br>
+<<elseif $Ravencost > 80>>
+    <<link [[获取牛的转化|Raven Shrine Shop]]>><<set $cow to 6>><<set $cowbuild to 100>><<set $Ravencost -= 80>><</link>><<note "-80鸦币" "red">>
+    <br>
+<</if>>
+<<getouticon>><<link [[返回 (0:01)|Imperial Guard]]>><<pass 1>><</link>>
+
+
+:: Tsukihan First Meet
+<<npc Tsukihan>><<person1>>
+<<if $Tsukihan_daily_visit is undefined>>
+    <<set C.npc.Tsukihan.visit += 1>>
+    <<set $Tsukihan_daily_visit to true>>
+<<else>>
+    <span class="teal"><<note "你今天已经见过月羽了。" "italic">></span>
+    <br><br>
+<</if>>
+<<if $Tsukihan_meet_first isnot true>>
+    神乐铃的余音还未散尽，最后一缕线香的白烟正攀上神台。
+    <br><br>
+    你的目光与台上的<<nnpcboy "Tsukihan">>对视了，你看到台上的<<nnpcboy "Tsukihan">>有着雪白的齐腰长发和一对明亮的赤红色双眼。
+    <br>
+    拜殿外突然掠过山风，拂过<<He>>的裙摆，带动着那轻柔的布料扬起。<<He>>略有些惊愕地看着你，然后低头看向被风吹起地裙摆，那一刹那的慌乱让<<He>>显得尤为脆弱。
+    但很快，<<He>>又恢复了冷静，只是微微低下头，双颊染上了一层淡淡的红晕。你可以感受到<<He>>那份微妙的羞涩，那种突然被打扰的感觉让<<He>>有些不知所措，但又无法掩饰那份心悸的感觉。
+    <br><br>
+    <<He>>轻声开口，抿着嘴说道：“抱歉，我没有打扰到你吧。”
+    <br><br>
+    你能感受到<<He>>那种羞涩感， <<He>>仿佛并不习惯被如此直勾勾地长久注视。
+    <br><br>
+    “你...你好，我的名字是<span class="gold">月羽</span>”，月羽说道。
+    <br>
+    “这里人很少，而且大部分本就是住在神社当中的，并且外面的人一般都进入不到神社当中，请问你是如何进来的呢？”
+    <br><br><br>
+    <<link [[如实回答|Tsukihan First Meet Text]]>><<set $Tsukihan_first_meet_text_dalliance to 1>><</link>>
+    <br>
+    <<link [[欺骗回答|Tsukihan First Meet Text]]>><<set $Tsukihan_first_meet_text_dalliance to 2>><</link>>
+<<elseif $Tsukihan_meet_first is true>>
+    月羽注意到了你，但是<<He>>只是休息了片刻便又开始了祭祀仪式。
+    <br><br>
+    月羽站在神社的祭祀场上，神乐铃的铃声清脆而悠扬，在空中回荡。随着祭祀的开始，月羽身着华丽的神乐服，手中持着祭具，缓缓地走到祭坛前。
+    月羽的神情温柔，眼中透出一丝深思。
+    <br>
+    你静静地注视着这一切，仿佛在欣赏一场悠久而神圣的仪式。
+    <br><br>
+    神乐的旋律渐渐升高，火焰在祭坛上跳动，林风轻拂过月羽的发梢，<<He>>的眼神微微沉静下来，似乎对这一切早已习惯，或者说，这份宁静早已在<<He>>的心中生根发芽。
+    <br><br><br>
+    <<link [[返回拜殿处 (0:05)|Saisenbako]]>><<pass 5>><<endevent>><</link>>
+<<else>>
+<</if>>
+
+:: Tsukihan First Meet Text
+<<npc Tsukihan>><<person1>>
+<<if $Tsukihan_first_meet_text_dalliance is 1>>
+    <<set $crow_letter to 0>>
+    <<set $Tsukihan_meet_first to true>>
+    你将信封的事情告诉月羽时，<<He>>的反应出乎你的意料。<<He>>捂着嘴，眼睛微微眯起，脸上扬起一抹温暖的笑容。
+    <br><br>
+    "真高兴你能来到渡鸦神社。"月羽的声音轻柔却带着一丝欢快，眼中的光芒像夜空中的星星一样闪耀。
+    <<He>>的笑容看起来纯真而带着些许调皮，“你知道，这里并不是简单的神社，传说中它与诸多秘密息息相关。”
+    <br><br>
+    你不禁感到一阵好奇。月羽与渡鸦神社的关系似乎远比你想象中的要复杂。
+    <br><br>
+    <<link [[继续|Tsukihan First Meet Text 2]]>><</link>>
+<<elseif $Tsukihan_first_meet_text_dalliance is 2>>
+    <<set $crow_letter to 3>>
+    <<if $worn.neck.name is "Crow Talisman">>
+        <<set $worn.neck.integrity to 0>>
+        <<set $Tsukihan_first_meet_text_dalliance to 3>>
+    <</if>>
+    你没有将信封的事告诉月羽，<<He>>的脸上透露着惊恐的神情。
+    <br><br>
+    "这里没有欢迎你，还请你赶快离开！"
+    <br><br>
+    <span class="red">“你被月羽赶出了神社”</span>
+    <br><br>
+    <<link [[被赶出神社|Forest]]>><<pass 30>><</link>>
+<<else>>
+<</if>>
+
+:: Tsukihan First Meet Text 2
+<<npc Tsukihan>><<person1>>
+月羽微微点头，转身示意你跟上。“既然你来了，不如我带你看看这座神社的四周。虽然它并不算大，但每个角落都别有一番风味。”他语气中带着一丝轻松和友好的邀请。
+<br><br>
+你跟着<<He>>走出了拜殿，四周是幽静的树木，偶尔有几声鸟鸣打破宁静。月羽的步伐轻盈，显得与周围的环境格外融洽。
+<br><br>
+首先，他带你走到了一座古老的玉垣旁。“这是神社的界限，外人通常不能越过这条线，”月羽解释道，指向那圈有些斑驳的石墙。“虽然看起来有些朴素，但这条界限象征着神社的神圣性。”
+<br>
+接着，他带你绕过一片被藤蔓覆盖的小径，走到了一座简朴的奉纳箱前。“这里是供香火供奉的地方，供奉的信物通常是希望和祝愿。有人在这里写下他们的心愿，期盼神明能帮助实现。”
+<br>
+再往前走，他指向旁边一座小小的绘马架。“这些绘马是信徒们写下自己的心愿后挂上的地方。神社的管理者会定期清理它们，有时也会做一些小的祈福仪式。”
+<br><br>
+你注意到月羽的语气虽然平淡，却充满了一种与神社的亲切感。显然，这些他并不陌生。
+<br><br>
+最后，他停在一处较为开阔的地方，眼前是一片宁静的池塘，水面上漂浮着几片飘落的树叶。“这是神社的水池。它不大，但每当清晨，水面总能映出明亮的阳光。”
+月羽稍微停顿了一下，脸上露出一丝温柔的笑容，“我喜欢在这里待一会儿，感觉一切都平静了。”
+<br><br>
+你看着他，忽然觉得这座神社虽然没有外界传闻中的神秘，却有着独特的宁静与美丽，仿佛每一处都透露着岁月的沉淀。<<lstress>><<stress -2>>
+<br><br>
+“怎么样，喜欢吗？”月羽转过头问，脸上带着轻松的微笑
+<br><br><br>
+<<link [[表示喜欢|Raven Shrine Pond]]>><<npcincr Tsukihan love 5>><<set $Tsukihan_pond_first to 1>><</link>><<glove>>
+<br>
+<<link [[表示不理解|Raven Shrine Pond]]>><<set $Tsukihan_pond_first to 2>><</link>>
+
+:: Raven Shrine Pond
+<<location "forest_raven_shrine">>
+<<npc Tsukihan>><<person1>>
+池塘的水面清澈如镜，仿佛一块巨大的蓝色宝石镶嵌在神社的四周。水面波澜不惊，倒映着周围的古老树木和空中的淡云，偶尔有几片落叶轻轻飘落，溅起的水花微不足道，迅速消失在宁静的湖面上。
+池塘的中央，有几株翠绿的荷花正悄然绽放，白色的花瓣上带着一层轻微的露水，在阳光下闪烁着晶莹的光泽。
+<br><br>
+周围的石堤被细藤环绕，苍老的石块上长满了苔藓，给池塘增添了一份古老的气息。水中偶尔有几只小鱼游弋，它们穿梭在水草间，悠然自得地享受这片安静的天地。
+池塘的边缘，几只悠闲的蜻蜓停在了微弱的水草上，翅膀轻微地扇动，泛起细小的涟漪。偶尔，一阵微风吹过，带起一丝丝水波，池塘表面泛起一圈圈波纹，映出岸边柳树的倒影。
+<br><br>
+四周的空气清新，带着一丝泥土的气息，和着水汽的湿润感，令人感到无比舒畅。这里，似乎与外界的喧嚣隔绝，所有的烦忧都被遗忘在了远处。
+池塘不大，却散发出一种让人放松的静谧感，仿佛是一处避世的世外桃源。
+<br><br>
+<<if $Tsukihan_pond_first is 1>>
+    “谢谢你也喜欢这里，但是我现在还有一些事没有做完，恕我难以陪伴了。”，月羽说完后便离开了。
+    <br><br><<set $Tsukihan_pond_first to 3>><<set $Tsukihan_pond_love to true>>
+<<elseif  $Tsukihan_pond_first is 2>>
+    “这样啊。。。那我还有事要忙，就先离开了”，月羽说完后便离开了。
+    <br><br><<set $Tsukihan_pond_first to 3>>
+<<else>>
+<</if>>
+<<if $Tsukihan_pond_first is 3 && (Time.hour >= 12 && Time.hour < 14)>>
+    <<set _texts to [
+    "月羽站在池塘边缘，轻轻弯腰，指着水面上悠然漂浮的荷花，“每到夏天，这里会开满荷花。花朵盛开时，水面上就像铺满了雪白的云朵。”",
+    "月羽轻轻低头，看着池塘中的倒影，水面如镜般平静。“这里的水总是特别清澈，即使是最微小的细纹也能在水中清晰可见。”月羽抬起手，指向远处的几只蜻蜓飞过，“夏天时，蜻蜓会聚集在池塘上空，像是守护着这片宁静。”",
+    "月羽微笑着，声音柔和：“每到傍晚，夕阳洒下的余晖将水面染成金色，池塘中的倒影就像是梦境一般，恍若不真实。”",
+    "月羽轻轻叹了口气，“这里虽然没有什么华丽的装饰，却总能让人感到一份宁静，仿佛世界的喧嚣都被池塘的水面吞噬了。”"
+    ]>>
+    <!-- 随机选择一段文本 -->
+    <<set _randomText to _texts[Math.floor(Math.random() * _texts.length)]>>
+    <!-- 显示随机文本 -->
+    <span class="lblue"><<print _randomText>></span>
+    <br><br>
+    <<link [[跟月羽交流 (0:15)|Tsukihan Chat]]>><<pass 5>><<stress -3>><<pass 15>><<npcincr Tsukihan love 1>><</link>><<glove>><<lstress>>
+    <<if C.npc.Tsukihan.love > 100>>
+        <br>
+        <<link [[月羽的赐福|Tsukihan Blessed]]>><<endevent>><</link>>
+    <<else>>
+    <</if>>
+<</if>>
+<br>
+<<link [[返回拜殿处 (0:05)|Saisenbako]]>><<pass 5>><<endevent>><</link>>
+
+:: Tsukihan Chat
+
+<<print [
+	"月羽轻轻地拿起池塘中的一片浮叶，手指轻触上面的水珠，发出微弱的滴水声。她转头对你微笑，眼神透着一丝温柔：“池塘的水很清澈，就像我们内心的世界一样。只有保持平静，才能看到水面下真正的自己。”",
+	"“你知道吗？”月羽突然开口，声音低沉而温柔，“每次站在这里，我都会想，池塘里的水是不是也有自己的故事。每一滴水，都承载着过去的记忆，而这些记忆，随着水波的流动，永远无法停留。”",
+	"月羽抬起头，望向天空，眼中带着一丝淡淡的愁绪：“有时候，我觉得自己也像这些水滴，永远无法停留，只能顺流而下，但却不知道下一个转角会遇见什么。”",
+    "月羽的目光定格在水中，那些缓缓游动的小鱼儿，似乎在她眼中融化成了某种深沉的思绪。“你有没有想过，水面上的每一圈波纹，其实都来自一颗落入水中的石子？”她轻声问道。",
+    "月羽的目光依旧停留在水面上，仿佛在思考：“有时候，我也希望自己能像这片池塘一样，保持那份平静，不被外界的波动所扰。但人总是会被很多东西牵绊，心中很难保持那份宁静。”",
+    "月羽把手放进池塘的水中，轻轻划过，水面顿时荡起一阵微波。她看着水波扩散开来，眼神有些深邃：“有时候，我会觉得，池塘不仅是平静的象征，它更像是一个容器，容纳了我们所有的愿望、记忆和情感。”",
+    "月羽看着我，眼中闪烁着一抹理解的光：“我们每个人都有属于自己的水域，也许我们无法永远保持清澈，但至少，我们可以在迷茫中，找到那份归属。”"
+].random()>><br><br>
+
+<<getouticon>><<link [[返回|Raven Shrine Pond]]>><</link>>
+
+
+:: Tsukihan Blessed
+
+<span class="gold">这是我对你的祝福哦~</span>
+<br><br>
+现在你可以随时进入神社了。
+<<set $Tsukihan_Allowed_Pass_Anytime to true>>
+<<set $darkfeathers to true>><<set $springglow to true>><<set $solicitous to true>>
+<br><br><br>
+<<getouticon>><<link [[返回|Raven Shrine Pond]]>><</link>>
+

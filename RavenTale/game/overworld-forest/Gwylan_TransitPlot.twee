@@ -1,0 +1,74 @@
+:: Forest Shop TransitPlot [widget]
+
+<<widget "forest_shop_transit">>
+    <br>
+    <<if $crow_letter is 1 >>
+        <br>
+        你根据信封里的提示来到了森林里奇怪的商店。
+        <br><br>
+        <<mysteryicon>><<link [[询问关于信封的事|Forest Shop Crow Letter]]>><</link>>
+        <br><br>
+        <<exitAll>>
+    <<else>>
+    <</if>>
+
+    <<if $Tsukihan_first_meet_text_dalliance is 3>>
+        <br>
+        你告诉格威岚，给你的护身符损坏了。
+        <br><br>
+        <<link [[询问能否再给予一枚护符|Double Crow Letter]]>><</link>>
+        <br><br>
+        <<exitAll>>
+    <</if>>
+<</widget>>
+
+:: Forest Shop Crow Letter
+<<npc Gwylan>><<person1>>
+<<set $Gwylan_permission to true>>
+
+<span class="gold">你将一封印有黯淡的鸟形灼痕的信件递给了格威岚。</span>
+<br><br>
+<<if $double_letter is undefined>>
+    格威岚看到这封信后，<<He>>先疑惑地问道："诶？你是从哪里得到这封信件的?"。
+    <br>
+    你将获得这封信的事如实地告诉了<<He>>。
+    <br><br>
+    格威岚欣慰地笑着，<<He>>觉得你是一位善良的人。
+    <br>
+    <<He>>跟你聊了许多森林里渡鸦们的事，你也在格威岚的商店里向<<He>>叙述着这几周的经历。
+    <br><br>
+    <<if $First_Encounter is true>>
+        除此之外，你还告诉<<He>>你在森林中发现了一条奇怪的小路。
+        <br>
+        听你说完后,格威岚说道："我给你戴上这个吧！持有这个的话，你就可以继续往山里的深处探索了。"
+        <br><br><br>
+        <<link [[一枚护符|Crow Talisman]]>><<endevent>><</link>>
+    <<else>>
+        <br>
+        听你说完后,格威岚说道："我给你戴上这个吧！如果你在森林中遇到一处奇怪的小路就试着往深处探索吧！"
+        <br><br><br>
+        <<link [[一枚护符|Crow Talisman]]>><<endevent>><</link>>
+    <</if>>
+<<else>>
+    <br><<link [[向格威岚获取护符|Crow Talisman]]>><<endevent>><</link>>
+<</if>>
+
+:: Crow Talisman
+<<wearneckbyname "Crow Talisman">>
+<<set $crow_letter to 2>>
+
+<span class="gold">你的身上穿戴着一枚刻有乌鸦的奇怪护符</span>
+<br><br>
+你什么都没有感觉到，或许这就是一枚普普通通的护符吧！————你心里如此想到
+<br><br><br><<set $double_letter to true>>
+<<getouticon>><<link [[返回|Forest Shop]]>><</link>>
+<span class="teal"><<note "将这枚护符戴在身上试着前往森林深处吧。" "italic">></span>
+
+:: Double Crow Letter
+<<npc Gwylan>><<person1>>
+
+“你说你的护符坏了？”，格威岚质疑地问道，“好吧！如果你能再次受到信件的话我就再给予你一枚护符。”
+<br><br>
+你心虚地没有告诉格威岚实情，但格威岚好像已经才出来是什么情况了。
+<br><br><br>
+<<getouticon>><<link [[返回|Forest Shop]]>><<endevent>><</link>>

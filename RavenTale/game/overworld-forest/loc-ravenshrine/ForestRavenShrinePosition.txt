@@ -1,0 +1,12 @@
+            <<if $forest lte 35>>
+                <<if $historytrait gte 2 and ($First_Encounter is true)>>
+                    <<link [[隐蔽的幽径 (0:05)|Raven Shrine First Encounter]]>><<pass 5>><</link>>
+                    <br>
+                <<elseif $historytrait gte 2>>
+                    <<link [[杂草丛生的碎石路 (0:05)|Raven Shrine First Encounter]]>><<pass 5>><</link>>  
+                    <br>
+                <<else>>
+                <</if>>
+            <</if>>
+            <br>
+            <<if $forest lte 30>>

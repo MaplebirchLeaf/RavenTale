@@ -1,0 +1,214 @@
+{
+  "name": "RavenTale",
+  "version": "0.0.1",
+  "styleFileList": [
+    "game/fallenangel/Feud.css"
+  ],
+  "scriptFileList": [
+    "game/fallenangel/Feud.js",
+    "game/npcSettings/Tsukihan.js",
+    "game/RaventaleTraits.js"
+  ],
+  "tweeFileList": [
+    "game/overworld-town/loc-park/ParkRavenPlot.twee",
+    "game/RavenTaleCharacteristicsSkills.twee",
+    "game/overworld-forest/loc-ravenshrine/raven_shrine.twee",
+    "game/overworld-forest/loc-ravenshrine/TsukihanRoom.twee",
+    "game/overworld-town/RobinConfession.twee",
+    "game/overworld-forest/Gwylan_TransitPlot.twee",
+    "game/overworld-forest/loc-ravenshrine/ravenTale_setting.twee",
+    "game/npcSettings/TsukihanSetting.twee",
+    "game/ItemSettings/ClothesSettings.twee"
+  ],
+  "imgFileList": [
+    "img/misc/icon/Platformicon.png",
+    "img/misc/icon/ravenshrineicon.png",
+    "img/misc/locations/forest_raven_shrine/base.png",
+    "img/misc/icon/Emaframeicon.png",
+    "img/misc/locations/forest_raven_shrine/snow.png",
+    "img/ui/balance.png",
+    "img/misc/icon/clothes/crow_talisman.png",
+    "img/misc/icon/baidianicon.png",
+    "img/ui/arrogant.png",
+    "img/misc/icon/toriiicon.png",
+    "img/misc/icon/ImperialGuardicon.png",
+    "img/clothes/neck/crowtalisman/full.png",
+    "img/misc/icon/crowchair.png",
+    "img/misc/icon/shrinepondicon.png",
+    "img/ui/rotten.png",
+    "img/misc/icon/Saisenbakoicon.png",
+    "img/misc/icon/parkcrowchair.png"
+  ],
+  "additionFile": [
+    "game/ItemSettings/RavenReminders.txt",
+    "game/ItemSettings/CrowLetter.txt",
+    "game/ItemSettings/ClothesSettings.txt",
+    "game/overworld-forest/loc-ravenshrine/ForestRavenShrinePosition.txt",
+    "clothes/neck.json"
+  ],
+  "addonPlugin": [
+    {
+      "modName": "ModdedClothesAddon",
+      "addonName": "ModdedClothesAddon",
+      "modVersion": "^1.1.0",
+      "params": {
+        "clothes": [
+          {
+            "key": "neck",
+            "filePath": "clothes/neck.json"
+          }
+        ]
+      }
+    },
+    {
+      "modName": "TweeReplacer",
+      "addonName": "TweeReplacerAddon",
+      "modVersion": "1.0.0",
+      "params": [
+        {
+          "passage": "Forest",
+          "findString": "\t\t\t<<if $forest lte 30>>",
+          "replaceFile": "game/overworld-forest/loc-ravenshrine/ForestRavenShrinePosition.txt"
+        },
+        {
+          "passage": "Widgets Clothing",
+          "findString": "<<widget \"condomsSidebar\">>",
+          "replaceFile": "game/ItemSettings/ClothesSettings.txt"
+        },
+        {
+          "passage": "Widgets Journal",
+          "findString": "\t<<if !$statFreeze and (($location is \"asylum\" and ($eden_asylum_window is 1 or ($daily.eden.distract gte 1 and Time.hour lt 21))) || $temple_spear_mission gte 1 || $dockwork gte 2 || ($brothelshowdata.intro and $brothelshowdata.type is \"none\") || $robindebtevent gte 1 and $robinmissing isnot 0 || $pubtask2 is 1 || $pubtask || $police_hack is 1 || $pub_hack_job gte 1 || $pubfame ||( $earSlime.event and !_tempEventHide) || $earSlime.forcedCommando isnot undefined || $earSlime.forcedDressing isnot undefined || $temple_rank is \"prospective\" || $chef_state gte 4 || $mason_pond gte 1 || ($brothel_machine_repair gte 1 and $brothel_machine_repair lte 3) || ($harpy gte 6 and $birdFly isnot 1) || ($studyBooks isnot undefined and $studyBooks.rented isnot \"none\") || $adultshopgrandopening || ($adultshopintro is 1 and $adultshopunlocked is undefined))>>",
+          "replaceFile": "game/ItemSettings/RavenReminders.txt"
+        },
+        {
+          "passage": "Widgets Journal",
+          "findString": "\t\t\t<<if $temple_spear_mission is 1>>",
+          "replaceFile": "game/ItemSettings/CrowLetter.txt"
+        },
+        {
+          "passage": "Park",
+          "findString": "<<maleicon>><<link",
+          "replace": "<<Crow_Letter>>\n\t\t<<maleicon>><<link",
+          "_comment": "渡鸦信件"
+        },
+        {
+          "passage": "Forest Shop Widgets",
+          "findString": "<<if $gwylan_aborted gte 1>>",
+          "replace": "<<forest_shop_transit>>\n\t<<if $gwylan_aborted gte 1>>",
+          "_comment": "森林商店检查点"
+        },
+        {
+          "passage": "Characteristics",
+          "findString": "<</if>>\n\t\t\t\t<<if $worn.handheld.type.includes(\"maid\")>>",
+          "replace": "<</if>><<RavenTaleCharacteristicsSkills>><<if $worn.handheld.type.includes(\"maid\")>>",
+          "_comment": "运动等提供加成显示"
+        },
+        {
+          "passage": "Characteristics",
+          "findString": "<!--PROMISCUITY-->",
+          "replace": "<<RavenTalebeautySkills>>\n\t\t\t\t<!--PROMISCUITY-->",
+          "_comment": "意志等提供加成显示"
+        },
+        {
+          "passage": "Forest",
+          "findString": "<<if $exposed lte 1>>",
+          "replace": "<<if $exposed lte 1>>\n\t\t\t\t<<raven_shrine_short>>",
+          "_comment": "意志等提供加成显示"
+        }
+      ]
+    },
+    {
+      "modName": "ModLoader DoL ImageLoaderHook",
+      "addonName": "ImageLoaderAddon",
+      "modVersion": "^2.3.0",
+      "params": []
+    },
+    {
+      "modName": "ReplacePatcher",
+      "addonName": "ReplacePatcherAddon",
+      "modVersion": "1.0.0",
+      "params": {
+        "js": [
+          {
+            "from": "if (V.robinPillory && V.robinPillory.danger !== undefined && (V.robindebtevent <= 1 || !V.baileySold)) V.robinPillory.active = true;",
+            "to": "if (V.robinPillory && V.robinPillory.danger !== undefined && (V.robindebtevent <= 1 || !V.baileySold)) V.robinPillory.active = true;fragment.append(wikifier(\"ravenTale_daily_reset\"));",
+            "fileName": "time.js",
+            "_comment": "时间刷新。"
+          },
+          {
+            "from": "cycleDelay: () => random(5, 15, true) * 1000,\n\t\t\t\t},\n\t\t\t},\n\t\t},",
+            "to": "cycleDelay: () => random(5, 15, true) * 1000,\n\t\t\t\t},\n\t\t\t},\n\t\t},forest_raven_shrine: {folder: \"forest_raven_shrine\",base: {default: {condition: () => !Weather.isSnow,image: \"base.png\",},snow: {condition: () => Weather.isSnow,image: \"snow.png\",}}},",
+            "fileName": "location-images.js",
+            "_comment": "增加侧边栏图案"
+          },
+          {
+            "from": "if (V.worn.feet.type.includes(\"shackle\")) result /= 10;",
+            "to": "if (V.worn.feet.type.includes(\"shackle\")) result /= 10;\n\t\t\tif (V.sturdybody === true) {result = Math.floor(result * 1.05);}",
+            "fileName": "ingame.js",
+            "_comment": "结实的身体，运动属性增加5%"
+          },
+          {
+            "from": "if (V.drunk >= 360) pain *= Math.min(0.95, 0.95 - 0.1 * ((V.drunk - 360) / 640));",
+            "to": "if (V.drunk >= 360) pain *= Math.min(0.95, 0.95 - 0.1 * ((V.drunk - 360) / 640));\n\t\t\t\tif (V.darkfeathers === true) pain *= 0.95;",
+            "fileName": "stat-changes.js",
+            "_comment": "玄翎，疼痛减免5%"
+          },
+          {
+            "from": "case \"tending\":",
+            "to": "case \"tending\":\n\t\t\tif (V.springglow === true && V.showersunlight !== true) {result = Math.floor(result * 1.07);}\n\t\t\tif (V.springglow === true && V.showersunlight === true) {result = Math.floor(result * 1.1);}",
+            "fileName": "ingame.js",
+            "_comment": "春晖，护理属性增加7%"
+          },
+          {
+            "from": "case \"housekeeping\":",
+            "to": "case \"housekeeping\":\n\t\t\tif (V.solicitous === true) {result = Math.floor(result * 1.1);}",
+            "fileName": "ingame.js",
+            "_comment": "殷勤，家务属性增加10%"
+          },
+          {
+            "from": "statChange.skill(\"beauty\", 100 - (V.trauma / V.traumamax) * 100);",
+            "to": "statChange.skill(\"beauty\", 100 - (V.trauma / V.traumamax) * 100);\n\tif (V.showersunlight === true && V.springglow !== true) {V.beauty *= 1.1;}\n\tif (V.showersunlight === true && V.springglow === true) {V.beauty *= 1.15;}",
+            "fileName": "time.js",
+            "_comment": "沐光，容貌增加10%"
+          },
+          {
+            "from": "Weather.setIceThickness(minutes);",
+            "to": "Weather.setIceThickness(minutes);\n\n\tif (V.purewings === true && Time.dayState !== \"night\") statChange.arousal(-minutes);\n\tif (V.brokenwings === true && Time.dayState !== \"day\") statChange.stress(-minutes);\n\tif (V.devilWings === true) statChange.arousal(minutes);\n\tif (V.brokenwings === true && Time.dayState !== \"day\" && V.darkfeathers === true) statChange.tiredness(-minutes);\n\tif (V.worldwings === true && Time.dayState !== \"night\") statChange.trauma(-minutes);",
+            "fileName": "time.js",
+            "_comment": "神圣转化翅膀效果。"
+          }
+        ]
+      }
+    }
+  ],
+  "dependenceInfo": [
+    {
+      "modName": "TweeReplacer",
+      "version": ">=1.0.0"
+    },
+    {
+      "modName": "ModdedClothesAddon",
+      "version": "^1.1.0"
+    },
+    {
+      "modName": "ModLoader DoL ImageLoaderHook",
+      "version": "^2.0.0"
+    },
+    {
+      "modName": "Simple Frameworks",
+      "version": ">=1.2.0"
+    },
+    {
+      "modName": "ReplacePatcher",
+      "version": "^1.0.0"
+    },
+    {
+      "modName": "ModdedFeatsAddon",
+      "version": "^1.0.0"
+    },
+    {
+      "modName": "GameVersion",
+      "version": ">=0.5.1.0"
+    }
+  ]
+}

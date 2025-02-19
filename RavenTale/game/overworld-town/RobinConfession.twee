@@ -1,0 +1,6 @@
+:: temple Robin [widget]
+
+<<if _robin_location isnot $robinmissing and C.npc.Robin.init is 1 and $confessionsTaken gte 5 and $robin_temple is 1>>
+    <<run statusCheck("Robin")>>
+    一个<<personsimple>>的声音传来。原谅我，<<sister>>，我觉得我做了一件坏事。我让我最爱的人替我支付债务。
+<</if>>

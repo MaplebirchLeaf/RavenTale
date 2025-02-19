@@ -1,0 +1,13 @@
+
+            <<if $crow_letter is 1 >>
+                <li>这封信上印有黯淡的鸟形灼痕，信里提到好像要去寻找一位名叫格威岚的人。
+                </li>
+            <<elseif $crow_letter is 2 >>
+                <li>根据格威岚的话语，应该试着前往森林深处去。
+                </li>
+            <<elseif $crow_letter is 3 >>
+                <li>护身符损坏，好像进不去神社了。<span class="teal"><<note "试着再去找一次格威岚吧。" "italic">></span>
+                </li>
+            <<else>>
+            <</if>>
+			<<if $temple_spear_mission is 1>>

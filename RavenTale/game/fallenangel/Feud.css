@@ -1,0 +1,20 @@
+/* mod.css 样式 */
+  /* 猩红色按钮 */
+  .vengeance-red {
+    background: linear-gradient(#FF2400, #8B0000);
+    border: 2px solid #DC143C;
+    text-shadow: 0 0 5px rgba(178,34,34,0.5);
+  }
+  
+  /* 文字特效 */
+  .vengeance-effect {
+    color: #8B0000;
+    font-weight: bold;
+    animation: vengeance-pulse 1s infinite;
+  }
+  
+  @keyframes vengeance-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }

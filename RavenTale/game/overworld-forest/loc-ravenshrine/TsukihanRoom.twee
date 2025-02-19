@@ -1,0 +1,58 @@
+:: Tsukihan Room
+<<set $outside to 0>><<effects>>
+
+
+<<bedicon _farmbed>><<link [[你的房间 (0:01)|RavenShrine Bedroom]]>><<pass 1>><<endevent>><</link>>
+<br>
+<<farmicon "alexbed">><<link [[月羽的房间 (0:01)|Tsukihan Bedroom]]>><<pass 1>><<endevent>><</link>>
+<br>
+<<icon "shrinepondicon.png">><<link [[前往神社池塘 (0:05)|Raven Shrine Pond]]>><<pass 5>><</link>>
+<br>
+<<icon "ravenshrineicon.png">><<link [[返回渡鸦石像处 (0:05)|Raven Shrine]]>><<pass 5>><</link>>
+
+:: RavenShrine Bedroom
+<<set $outside to 0>><<effects>><<getTarget true>>
+
+<<bedicon _farmbed>><<link [[脱光衣服上床|]]>><</link>>
+<br>
+
+<<roomoptions>>
+
+<<wardrobeicon>><<link [[衣柜|]]>><</link>>
+<br>
+<<mirroricon>><<link [[镜子|]]>><<preMirror>><</link>>
+<br><br>
+<<farmicon "alexbed">><<link [[月羽的房间 (0:01)|Tsukihan Bedroom]]>><<pass 1>><</link>>
+<br>
+<<main_hall_icon>><<link [[神社屋舍 (0:01)|Tsukihan Room]]>><<pass 1>><</link>>
+<br><br>
+<<link [[游戏设置|]]>><</link>>
+<br>
+<<attitudesControlCheck>>
+<<if $attitudesControl.showGoldLink is true>>
+	<span class="goldLink"><<link [[Attitudes]]>><<set $attitudesExitPassage to $passage>><</link>> </span><span class="red">!!</span>
+<<else>>
+	<<link [[Attitudes]]>><<set $attitudesExitPassage to $passage>><</link>>
+<</if>>
+<br>
+
+:: Tsukihan Bedroom
+
+
+<<bedicon _farmbed>><<link [[你的房间 (0:01)|RavenShrine Bedroom]]>><<pass 1>><<endevent>><</link>>
+<br>
+<<main_hall_icon>><<link [[神社屋舍 (0:01)|Tsukihan Room]]>><<pass 1>><</link>>
+
+
+
+
+:: RavenShrine Bed
+<<effects>>
+<<wearoutfit>>
+
+<<set $bus to "ravenshrine_bedroom">><<effects>>
+你依偎在被子里。
+
+<<if $wraith.state and $wraithPrison and ($moonstate is "evening" or $moonstate is _nightstate)>>
+	你感到焦虑，眼睛盯着镜子。
+<</if>>

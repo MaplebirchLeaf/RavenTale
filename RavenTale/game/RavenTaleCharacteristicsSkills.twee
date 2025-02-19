@@ -1,0 +1,35 @@
+:: RavenTale Characteristics Skills [widget]
+
+<<widget "RavenTaleCharacteristicsSkills">>
+
+	<<if $sturdybody is true>>
+		<<set _athleticsConfig.modifier to Math.floor(_athleticsConfig.modifier * 1.05)>>
+		<<set _athleticsConfig.modTypes.good.pushUnique("结实的身体")>> 
+	<</if>>
+	<<if $springglow is true && $showersunlight isnot true>>
+		<<set _tendingConfig.modifier to Math.floor(_tendingConfig.modifier * 1.07)>>
+		<<set _tendingConfig.modTypes.good.pushUnique("春晖")>>
+	<</if>>
+	<<if $solicitous is true>>
+		<<set _housekeepingConfig.modifier to Math.floor(_housekeepingConfig.modifier * 1.1)>>
+		<<set _housekeepingConfig.modTypes.good.pushUnique("殷勤")>>
+	<</if>>
+	<<if $springglow is true && $showersunlight is true>>
+		<<set _tendingConfig.modifier to Math.floor(_tendingConfig.modifier * 1.1)>>
+		<<set _tendingConfig.modTypes.good.pushUnique("慈母光辉")>>
+	<</if>>
+
+<</widget>>
+
+<<widget "RavenTalebeautySkills">>
+
+	<<if $showersunlight is true && $springglow isnot true>>
+		<<set _beautyConfig.modifier to Math.floor(_beautyConfig.modifier * 1.1)>>
+		<<set _beautyConfig.modTypes.good.pushUnique("沐光")>>
+	<</if>>
+	<<if $showersunlight is true && $springglow is true>>
+		<<set _beautyConfig.modifier to Math.floor(_beautyConfig.modifier * 1.15)>>
+		<<set _beautyConfig.modTypes.good.pushUnique("慈母光辉")>>
+	<</if>>
+
+<</widget>>

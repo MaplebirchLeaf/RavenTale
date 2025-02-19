@@ -1,0 +1,19 @@
+:: Raven Tale Setting [widget]
+
+<<widget "ravenTale_daily_reset">>
+
+<<set $Tsukihan_daily_visit to undefined>>
+<<set $Chair_daily_feed to undefined>>
+<<set $feed_crows_amount to undefined>>
+<<set $FeudDaily to undefined>>
+<<set $EmaDaily is undefined>>
+<<set $Saisenbako_Money to undefined>>
+
+<</widget>>
+
+<<widget "raven_shrine_short">>
+    <<if $Tsukihan_Allowed_Pass_Anytime is true && C.npc.Tsukihan.love > 100>>
+        <<icon "toriiicon.png">><<link [[神社捷径 (0:35)|Torii]]>><<pass 35>><</link>>
+    <<else>>
+    <</if>>
+<</widget>>

@@ -1,0 +1,284 @@
+:: Crow Letter Core [widget]
+
+<<widget "Crow_Letter">>
+    <<if Time.dayState is "dusk" and $exposed lte 1 >>
+        <<if ($feed_crows is 10) and (Time.season is "autumn")>>
+            <<mysteryicon>><<link [[公园长椅 (0:01)|Crow Letter]]>><<pass 1>><</link>>
+        <<elseif Time.weekDay is 1 >>
+            <br>
+            几只小鸟围在了长椅周围。
+            <<if !$crow_chair>>
+                <br><<set $feed_crows to 0>>
+                <<mysteryicon>><<link [[公园长椅 (0:01)|Crow Chair]]>><<pass 1>><<set $crow_chair to true >><</link>>
+            <<else>>
+                <br>
+                <<icon "crowchair.png">><<link [[公园长椅 (0:01)|Crow Chair]]>><<pass 1>><</link>>
+            <</if>>
+        <<else>>
+            <br>
+            <<icon "parkcrowchair.png">><<link [[公园长椅 (0:01)|Park Long Chair]]>><<pass 1>><</link>>
+        <</if>>
+    <</if>>
+    <br><br>
+<</widget>>
+
+:: Crow Chair
+
+<<if Time.season is "autumn" and ($crow_chair is true) >>
+    你像往常一样坐在长椅上给鸟儿们喂食，但今天好像有所不同。
+    <br>
+    <span class="grey">你发现这里的鸟儿比平时多了不少。</span>几只黑色羽毛的鸟儿朝你依偎着，仿佛在向你索求什么。
+    <br><br><br>
+    <<link [[像往常一样投喂 (0:10)|Feedding birds]]>><<pass 10>><<reduceRandomFruits>><</link>><<note "- 水果" "red">><<lstress>>
+    <<if $plants.bird_egg.amount >= 1 && $Chair_daily_feed == undefined>>
+    <br><<if !$Feeddingravens>>
+            <<link [[鸟蛋从身上掉落 (0:05)|Feedding ravens]]>><<pass 5>><<set $plants.bird_egg.amount -= 1>><</link>><<note "- 鸟蛋" "red">>
+        <<else>>
+            <<link [[向黑色的鸟投喂鸟蛋 (0:05)|Feedding ravens]]>><<pass 5>><<set $plants.bird_egg.amount -= 1>><</link>><<note "- 鸟蛋" "red">>
+        <</if>>
+    <<elseif $Chair_daily_feed is true>>
+    <br><span class="teal"><<note "黑羽的鸟儿已经飞走了————" "italic">></span>
+    <<else>>
+    <</if>>
+    <<if $Chair_daily_feed is undefined>>
+        <br>
+        <<link [[驱赶黑鸟 (0:05)|Crow Chair 2]]>><<pass 5>><</link>>
+    <</if >>
+    <br>
+    <<link [[靠在长椅上休息 (0:15)|Crow Chair rest]]>><<stress -1>><<tiredness -1>><<pass 15>><</link>><<lstress>><<ltiredness>><<gharass>>
+    <br>
+    <<getouticon>><<link [[离开|Park]]>><</link>>
+<<else>>
+    公园的长椅旁围着许多的鸟儿，你靠坐着椅背舒适地享受日光。
+    <br><br><br>
+    <<link [[投喂小鸟 (0:10)|Feedding birds]]>><<pass 10>><<reduceRandomFruits>><</link>><<note "- 水果" "red">><<lstress>>
+    <br>
+    <<link [[靠在长椅上休息 (0:15)|Crow Chair rest]]>><<stress -1>><<tiredness -1>><<pass 15>><</link>><<lstress>><<ltiredness>><<gharass>>
+    <br>
+    <<getouticon>><<link [[离开|Park]]>><</link>>
+<</if>>
+
+:: Crow Chair 2
+
+<<set $Chair_daily_feed to true>>
+<<if $feed_crows < 1>>
+    <<set $feed_crows -= 0>>
+<<elseif $feed_crows < 2 || $feed_crows_amount is 2>>
+    <<set $feed_crows -= 1>>
+<<elseif $feed_crows < 3 || $feed_crows_amount is 1>>
+    <<set $feed_crows -= 2>>
+<<else>>
+    <<set $feed_crows -= 3>>
+<</if>>
+你将长椅周围的黑鸟驱散走了————
+<br><br><br>
+<<link [[投喂小鸟 (0:10)|Feedding birds]]>><<pass 10>><<reduceRandomFruits>><</link>><<note "- 水果" "red">>
+<br>
+<<link [[靠在长椅上休息 (0:15)|Crow Chair rest]]>><<stress -1>><<tiredness -1>><<pass 15>><</link>><<lstress>><<ltiredness>><<gharass>>
+<br>
+<<getouticon>><<link [[离开|Park]]>><</link>>
+
+:: Reduce Random Fruits [widget]
+
+<<widget "reduceRandomFruits">>
+    <<set _fruits to ["apple", "orange", "banana", "lemon", "pear", "strawberry", "peach", "plum"]>>
+
+    <<set $totalFruits to 0>>
+    <<for _fruit range _fruits>>
+        <<if $plants[_fruit]>>
+            <<set $totalFruits += $plants[_fruit].amount>>
+        <<else>>
+            <<set $plants[_fruit] = { "amount": 0 }>>  
+        <</if>>
+    <</for>>
+
+    <<if $totalFruits gt 0>>
+        <<set $randomAmount to Math.min(Math.floor(Math.random() * 3) + 1, $totalFruits)>>
+
+        <<for _i to 1; _i lte $randomAmount; _i++>>
+            <<set _randomFruit to _fruits[Math.floor(Math.random() * _fruits.length)]>>
+
+            <<if $plants[_randomFruit] and $plants[_randomFruit].amount gt 0>>
+                <<set $plants[_randomFruit].amount -= 1>>  
+            <<else>>
+                <<set _i -= 1>>  
+            <</if>>
+        <</for>>
+    <<else>>
+    <</if>>
+<</widget>>
+
+:: Random chair molestation [widget]
+
+<<widget "Crowchairex1">>
+	<<generate1>>你背靠在长椅上休息，眼睛似乎有些闭上了。此时突然有个人出现在你的身旁，一双手臂从后面缠住你，并将你压倒在地。
+	<br><br>
+
+	<<set $molestationstart to 1>>
+
+	<span id="next"><<link [[继续->Park Woman]]>><</link>></span><<nexttext>>
+<</widget>>
+
+
+<<widget "Randomchairmolestation">>
+    <<if !$randomChairMolestation>> 
+        <<set $randomChairMolestation = 0>>  <!-- 初始化 $randomChairMolestation，如果没有定义 -->
+    <</if>>
+    <!-- 随机增加值，范围为 1 到 150 -->
+    <<set $randomChairMolestation += Math.floor(Math.random() * 150) + 1>>
+    <!-- 如果 $randomChairMolestation 大于或等于 1000，触发 molestationstart 并重置值 -->
+    <<if $randomChairMolestation >= 1000>>
+        <<Crowchairex1>>  <!-- 触发 Crowchairex1 -->
+        <<set $randomChairMolestation to 0>>  <!-- 重置值 -->
+        <<set $chair_rest to true>>
+    <</if>>
+<</widget>>
+
+:: Park Long Chair
+<<if !$parklongchair>>
+    你走进一个宁静的公园，四周绿树成荫，鸟儿在枝头歌唱。阳光透过树叶洒下斑驳的光影。前方的长椅孤零零地摆放在小径旁，周围是几株开花的灌木，微风轻拂，空气清新。
+    在这安静的角落，时间仿佛都慢了下来。你坐下，感受着轻柔的风吹过，短暂的宁静让人心情平和。
+    <br><<set $parklongchair to true>>
+<<else>>
+<</if>>
+    你走向了公园里经典的长椅，它看起来的不是特别的脏乱，或许可以坐上去休息片刻。
+<br>你坐下，感受着轻柔的风吹过，短暂的宁静让人心情平和。
+<br><br><br>
+<<link [[靠在长椅上休息 (0:15)|Crow Chair rest]]>><<stress -1>><<tiredness -1>><<pass 15>><</link>><<lstress>><<ltiredness>><<gharass>>
+<br>
+<<getouticon>><<link [[离开|Park]]>><</link>>
+
+:: Feedding birds
+
+<<stress -3>>
+黄昏的暮光透过树叶的缝隙洒在公园的长椅上，你往长椅周围的地面上散落一些水果地碎屑。
+<br><br>
+随后几只鸟儿蹦蹦跳跳地靠近，小心翼翼地啄食着地上的食物。还有几只鸟儿叽叽喳喳地鸣叫着，仿佛在呼唤同伴。
+<br><br><span class="gold">
+<<if $totalFruits gt 0>>
+    你减少了 $randomAmount 个水果！<br>
+    现在：<br>
+    - 苹果的数量是：$plants.apple.amount<br>
+    - 橘子的数量是：$plants.orange.amount<br>
+    - 香蕉的数量是：$plants.banana.amount<br>
+    - 柠檬的数量是：$plants.lemon.amount<br>
+    - 梨子的数量是：$plants.pear.amount<br>
+    - 草莓的数量是：$plants.strawberry.amount<br>
+    - 桃子的数量是：$plants.peach.amount<br>
+    - 李子的数量是：$plants.plum.amount<br>
+<<else>>
+    没有水果可以减少。
+<</if>></span>
+<<parkicon>><<link [[回到公园|Park]]>><</link>>
+
+:: Crow Chair rest
+
+你在公园长椅上休息着。
+<br><br>
+<<set _texts to [
+    "你在公园的草地上看到一只小猫，它在草地上蹦蹦跳跳。",
+    "天上的云朵变得越来越暗，似乎要下雨了呢。",
+    "你闻到一股花香味，转身看到一团正在盛放的花簇。",
+    "远处传来一阵欢笑声，似乎是草地上的一些人在庆祝什么。",
+    "你发现了一个鬼鬼祟祟的人，那个人试图在偷拍另一个人。"
+]>>
+<!-- 随机选择一段文本 -->
+<<set _randomText to _texts[Math.floor(Math.random() * _texts.length)]>>
+<!-- 显示随机文本 -->
+<<print _randomText>>
+<br><br>
+<<Randomchairmolestation>>
+<<if Time.hour < 2 >>
+    <span class="gold">现在太晚了，该离开了。</span>
+    <br><br><br>
+    <<parkicon>><<link [[回到公园|Park]]>><</link>>
+<<else>>
+    <<if !$chair_rest>>
+        <br>
+        <<link [[继续休息 (0:15)|Crow Chair rest]]>><<stress -1>><<tiredness -1>><<pass 15>><</link>><<lstress>><<ltiredness>><<gharass>>
+        <br>
+        <<parkicon>><<link [[回到公园|Park]]>><</link>>
+    <<elseif $chair_rest is true>>
+    <<set $chair_rest to false>>
+    <<else>>
+    <</if>>
+<</if>>
+
+:: Feedding ravens
+
+<<if $feed_crows_amount is undefined>>
+    <<set $feed_crows_amount to 1>>
+    <<if $feed_crows < 10>>
+        <<set $feed_crows += 1>>
+    <</if>>
+    <<if $Feeddingravens isnot true>>
+        你不知为何散落了鸟蛋在地面上，奇怪的是黑羽的鸟儿无视了水果碎屑转而飞向鸟蛋。
+        <<set $Feeddingravens to true>>
+    <<else>>
+        你像上次一般尝试将鸟蛋给予黑羽的鸟儿
+    <</if>>
+    <br><br>
+    黑羽的鸟儿叼走了你给予的鸟蛋，长椅的周围还剩下<span class="gold">2只</span>黑色羽毛的鸟儿。
+    <br><br>
+    <<if $plants.bird_egg.amount >= 1>>
+        <<link [[继续投喂鸟蛋 (0:05)|Feedding ravens 2]]>><<pass 5>><<set $plants.bird_egg.amount -= 1>><</link>><<note "- 鸟蛋" "red">>
+    <</if>>
+    <br>
+    <<parkicon>><<link [[回到公园|Park]]>><</link>>
+<<elseif $feed_crows_amount is 1>>
+    <br><br>
+    ————长椅的周围只有<span class="gold">2只</span>黑色羽毛的鸟儿。
+    <span id="next"><<link [[继续->Feedding ravens 2]]>><</link>></span><<nexttext>>
+<<elseif $feed_crows_amount is 2>>
+    <br><br>
+    ————长椅的周围只有<span class="gold">1只</span>黑色羽毛的鸟儿。
+    <span id="next"><<link [[继续->Feedding ravens 3]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Feedding ravens 2
+
+<<set $feed_crows_amount to 2>>
+<<if $feed_crows < 10>>
+    <<set $feed_crows += 1>>
+<</if>>
+你尝试将鸟蛋给予黑羽的鸟儿。
+<br><br>
+黑羽的鸟儿叼走了你给予的鸟蛋，长椅的周围还剩下<span class="gold">1只</span>黑色羽毛的鸟儿。
+<br><br>
+<<if $plants.bird_egg.amount >= 1>>
+    <<link [[继续投喂鸟蛋 (0:05)|Feedding ravens 3]]>><<pass 5>><<set $plants.bird_egg.amount -= 1>><</link>><<note "- 鸟蛋" "red">>
+<</if>>
+<br>
+<<parkicon>><<link [[回到公园|Park]]>><</link>>
+
+:: Feedding ravens 3
+
+<<set $Chair_daily_feed to true>>
+<<if $feed_crows < 10>>
+    <<set $feed_crows += 1>>
+<</if>>
+你尝试将鸟蛋给予黑羽的鸟儿。
+<br><br>
+黑羽的鸟儿叼走了你给予的鸟蛋，长椅的周围还剩下<span class="gold">0只</span>黑色羽毛的鸟儿。
+<br><br>
+<<parkicon>><<link [[回到公园|Park]]>><</link>>
+
+:: Crow Letter
+<<set $feed_crows -= 10>>
+<<set $crow_letter to 1 >>
+今天你坐在公园的长椅上时，突然有一只黑羽鸟儿给你叼来了<span class="red">一封信</span>。
+<br><br>
+这封信上印有黯淡的鸟形灼痕，关于里面的内容其实很简短。
+<br><br>
+<<print sexSwitch(
+  "Gwylan",
+  "格威岚先生也是我们的好友，将这封信交予格威岚先生，他会告诉你该如何去做的。在森林中我们也承蒙了许多格威岚先生的帮助。格威岚先生总会清理那些对渡鸦们的威胁，还有好一些事就不多赘述了。",
+  "格威岚女士也是我们的好友，将这封信交予格威岚女士，她会告诉你该如何去做的。在森林中我们也承蒙了许多格威岚女士的帮助。格威岚女士总会给予渡鸦们食物和庇护它们，还有好一些事就不多赘述了。",
+)>>
+<br><br>
+<<if $double_letter is undefined>>
+————寻找<span class="gold">森林</span>里隐藏的秘密，我将在那里等你。感谢你照顾了渡鸦们，现在也轮到我们回报你了。
+<br><br>
+<<else>>
+<</if>>
+<<parkicon>><<link [[回到公园|Park]]>><</link>>

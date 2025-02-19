@@ -1,0 +1,17 @@
+<<widget "wearneckbyname">>
+    <<if !$itemMap>>  <!-- 如果 $itemMap 未定义，则初始化映射 -->
+        <<set $itemMap = {}>>  <!-- 初始化物品映射表 -->
+        <<for _index, _item range setup.clothes["neck"]>>  <!-- 遍历所有颈部物品 -->
+            <<set $itemMap[_item.name] = _index>>  <!-- 将物品名称映射到物品索引 -->
+        <</for>>
+    <</if>>
+
+    <<if $itemMap.hasOwnProperty(_args[0])>>  <!-- 检查映射中是否有该物品名称 -->
+        <<set _itemIndex = $itemMap[_args[0]]>>  <!-- 获取物品对应的index -->
+        <<neckwear _itemIndex _args[1] _args[2]>>  <!-- 使用neckwear穿戴物品 -->
+    <<else>>
+        <<print "Error: Item '" + _args[0] + "' not found in itemMap.">>  <!-- 如果没有找到物品，则输出错误 -->
+    <</if>>
+<</widget>>
+
+<<widget "condomsSidebar">>
